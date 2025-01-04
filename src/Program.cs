@@ -6,15 +6,26 @@ static class called "Application". This class contains a Main method, which is t
 the program. */
 namespace Application
 {
-
     /* The Application class handles different command line actions based on the arguments passed to
     the Main method. */
     static class Application
     {
+        /// <summary>
+        /// Checks if the input string is a valid number.
+        /// </summary>
+        /// <param name="input">The string to be checked.</param>
+        /// <returns>Returns true if the input is a valid number, otherwise false.</returns>
         public static bool IsNumber(string input)
         {
             return Regex.IsMatch(input, @"^\d+$");
         }
+
+        /// <summary>
+        /// Validates the arguments for different CLI actions based on the action type.
+        /// </summary>
+        /// <param name="actionArgs">The arguments passed to the program.</param>
+        /// <param name="action">The action to be validated (e.g., keygen, sendkey).</param>
+        /// <returns>Returns true if the arguments are valid for the specified action, otherwise false.</returns>
         static bool ValidateCliActionsArguments(string[] actionArgs, string action)
         {
             switch (action.ToLower())
@@ -111,14 +122,21 @@ namespace Application
             }
 
         }
+
+        /// <summary>
+        /// The main entry point for the application.
+        /// It validates the command line arguments and performs the corresponding action based on the first argument.
+        /// </summary>
+        /// <param name="args">The command line arguments passed to the program.</param>
         public static void Main(string[] args)
         {
-
+            // Validate the command line arguments based on the action
             if (!ValidateCliActionsArguments(args, args[0]))
             {
                 System.Environment.Exit(1);
             }
 
+            // Perform the appropriate action based on the first argument
             if (args[0].Equals("keyGen"))
             {
                 CliAction.KeyGen keyGen = new CliAction.KeyGen(args);
@@ -152,6 +170,7 @@ namespace Application
 
             else
             {
+                // Inform the user about the invalid action command
                 Console.WriteLine("Action command not supported");
                 Console.WriteLine("Options are the following: ");
                 Console.WriteLine("\tdotnet run keyGen <bits>");

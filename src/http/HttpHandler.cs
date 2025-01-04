@@ -21,7 +21,7 @@ public class HttpHandler
         {
             try
             {
-                string url = $"http://kayrun.cs.rit.edu:5000/Key/{email}";
+                string url = $"REPLACE_WITH_SERVER_URL/Key/{email}";
                 HttpResponseMessage response = await client.GetAsync(url);
 
                 if (response.IsSuccessStatusCode)
@@ -59,7 +59,7 @@ public class HttpHandler
         {
             try
             {
-                string url = $"http://kayrun.cs.rit.edu:5000/Key/{email}";
+                string url = $"REPLACE_WITH_SERVER_URL/Key/{email}";
 
                 var content = new StringContent(serializedJson, Encoding.UTF8, "application/json");
 
@@ -100,7 +100,7 @@ public class HttpHandler
         {
             try
             {
-                string url = $"http://kayrun.cs.rit.edu:5000/Message/{email}";
+                string url = $"REPLACE_WITH_SERVER_URL/Message/{email}";
 
                 var content = new StringContent(serializedJson, Encoding.UTF8, "application/json");
 
@@ -138,7 +138,7 @@ public class HttpHandler
         {
             try
             {
-                string url = $"http://kayrun.cs.rit.edu:5000/Message/{email}";
+                string url = $"REPLACE_WITH_SERVER_URL/Message/{email}";
                 HttpResponseMessage response = await client.GetAsync(url);
 
                 HttpStatusCode statusCode = response.StatusCode;
