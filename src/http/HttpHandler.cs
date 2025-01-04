@@ -1,10 +1,6 @@
 using System.Net;
 using System.Text;
 
-
-
-
-
 /* The `HttpHandler` class provides methods for sending and retrieving data from a server using HTTP
 requests. */
 public class HttpHandler
